@@ -1,0 +1,20 @@
+inherit: true
+
+build:
+    environment:
+        php:
+            version: 7.1
+    tests:
+        before:
+            - 'composer install'
+            - 'cp .env.example .env'
+            - 'php artisan key:generate'
+            - 'php artisan config:clear'
+        override:
+            -
+                command: 'vendor/bin/phpunit --coverage-clover=coverage-file'
+                coverage:
+                    file: 'coverage-file'
+                    format: 'clover'
+filter:
+    paths: ["app/*", "tests/*"]
