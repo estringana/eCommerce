@@ -12,12 +12,6 @@ class ProductsCanBeRequestedTest extends TestCase
 {
     use DatabaseMigrations;
 
-    protected function setUp()
-    {
-        parent::setUp();
-        $this->actingAs(factory(User::class)->create(), 'api');
-    }
-
     /** @test */
     public function itShouldReturn200WhenVisitingAnExistingProduct()
     {

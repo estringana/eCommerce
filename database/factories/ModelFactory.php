@@ -13,7 +13,9 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Color;
 use App\Product;
+use App\Size;
 
 $factory->define(App\User::class, function (Faker\Generator $faker) {
     static $password;
@@ -30,5 +32,17 @@ $factory->define(Product::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'description' => $faker->paragraph(2),
+    ];
+});
+
+$factory->define(Size::class, function (Faker\Generator $faker) {
+    return [
+        'name' => (string)$faker->numberBetween(1,99),
+    ];
+});
+
+$factory->define(Color::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->colorName,
     ];
 });
